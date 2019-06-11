@@ -1,24 +1,3 @@
-# README
+參見 [app/javascript/bundles/Classroom/README.md](https://github.com/choznerol/demo-react-on-rails/blob/master/app/javascript/bundles/Classroom/README.md)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+commit 可以從 [4ebf95c](https://github.com/choznerol/demo-react-on-rails/commit/4ebf95cf7abce81757ae79338815f8ab291b139a) 開始看
