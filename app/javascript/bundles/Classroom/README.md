@@ -1,5 +1,7 @@
 # `<Classroom>`
 A full feature React.js component running on RoR or SPA
+<img width="1132" alt="圖片" src="https://user-images.githubusercontent.com/12410942/59246059-bf380200-8c4d-11e9-850a-a063a0158d1f.png">
+
 
 ## Feature
 
