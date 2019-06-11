@@ -1,8 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+<p id="show">
   <strong>Title:</strong>
   <%= @lecture.title %>
+
+  <p>
+    <%= image_tag @lecture.coverImage, class: "field_cover_image"  %>
+  </p>
 </p>
 
 <%= link_to 'Edit', edit_lecture_path(@lecture) %> |

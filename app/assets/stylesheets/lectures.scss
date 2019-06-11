@@ -1,3 +1,15 @@
 // Place all the styles related to the lectures controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#index {
+  img.field_cover_image {
+    height: 3rem;
+  }
+}
+
+#show {
+  img.field_cover_image {
+    height: 5rem;
+  }
+}
