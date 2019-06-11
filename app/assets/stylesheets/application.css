@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+
+footer > ul {
+  list-style: none;
+  display: flex;
+  position: fixed;
+  bottom: 0;
+}
