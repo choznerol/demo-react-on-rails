@@ -1,21 +1,58 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import { string, shape, arrayOf, number } from 'prop-types';
 
-export default class HelloWorld extends React.Component {
+export default class Classroom extends React.Component {
   static propTypes = {
-    title: PropTypes.string.isRequired, // this is passed from the Rails view
+    title: string.isRequired,
+    lectures: arrayOf(shape({
+      id: string,
+      title: string,
+      coverImageUrl: string,
+      path: string,
+    })).isRequired,
+    activeLectureId: string.isRequired,
   };
 
-  render() {
-    return (
-      <div>
-        <h3>
-          {this.props.title}
-        </h3>
+  getActiveLecture = () => this.props.lectures.filter(({ id }) => id === this.props.activeLectureId)[0]
 
-        <pre className="debug">
-          this.props={JSON.stringify(this.props, null, 4)}
-        </pre>
+  render() {
+    const activeLecture = this.getActiveLecture();
+
+    return (
+      <div id="classroom">
+        <header>
+          <h3>{this.props.title}</h3>
+          <details>
+            <summary>{"點擊展開 <Classroom/> 的 props"}</summary>
+            <pre className="debug">
+              this.props={JSON.stringify(this.props, null, 4)}
+            </pre>
+          </details>
+        </header>
+
+        <main>
+          <div className="video-container">
+            <p className="loader">載入中...</p>
+            <img src={activeLecture.coverImageUrl} alt="-"/>
+          </div>
+
+          <h4>單元 {activeLecture.id}: {activeLecture.title}</h4>
+        </main>
+
+        <aside>
+          <ol>
+            {this.props.lectures.map((lecture) => (
+              <li
+                className={this.props.activeLectureId === lecture.id ? 'active': ''}
+                key={lecture.id}
+              >
+                <a href={lecture.path}>
+                  <h4>{lecture.id} - {lecture.title}</h4>
+                </a>
+              </li>
+            ))}
+          </ol>
+        </aside>
       </div>
     );
   }
