@@ -4,7 +4,7 @@ class LecturesController < ApplicationController
   # GET /lectures
   # GET /lectures.json
   def index
-    @lectures = Lecture.all
+    @lectures = Lecture.with_attached_coverImage
   end
 
   # GET /lectures/1
