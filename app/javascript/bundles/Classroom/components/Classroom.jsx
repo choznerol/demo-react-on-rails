@@ -1,6 +1,8 @@
 import React from 'react';
+import { string, shape, arrayOf, number, func } from 'prop-types';
 import find from 'lodash/find';
-import { string, shape, arrayOf, number } from 'prop-types';
+import get from 'lodash/get';
+import { FetchSomething } from './FetchSomething';
 
 export default class Classroom extends React.Component {
   static propTypes = {
@@ -9,12 +11,21 @@ export default class Classroom extends React.Component {
       id: string,
       title: string,
       coverImageUrl: string,
-      path: string,
     })).isRequired,
     activeLectureId: string.isRequired,
+    onLectureChange: func.isRequired,
+    fetch: func.isRequired,
   };
 
+  state = {
+    enableAutoPlay: false,
+  }
+
   getActiveLecture = () => find(this.props.lectures, ['id', this.props.activeLectureId])
+
+  onAutoPlayToggled = (e) => {
+    this.setState({ enableAutoPlay: e.target.checked })
+  }
 
   render() {
     const activeLecture = this.getActiveLecture();
@@ -38,21 +49,36 @@ export default class Classroom extends React.Component {
           </div>
 
           <h4>單元 {activeLecture.id}: {activeLecture.title}</h4>
+
+          <label htmlFor="checkbox-enableAutoPlay">
+            自動播放
+          </label>
+          <input
+            id="checkbox-enableAutoPlay"
+            type="checkbox"
+            value={this.state.enableAutoPlay}
+            onChange={this.onAutoPlayToggled}
+          />
+
         </main>
 
         <aside>
           <ol>
             {this.props.lectures.map((lecture) => (
               <li
-                className={this.props.activeLectureId === lecture.id ? 'active': ''}
+              className={this.props.activeLectureId === lecture.id ? 'active': ''}
                 key={lecture.id}
               >
-                <a href={lecture.path}>
+                <a onClick={() => this.props.onLectureChange(lecture.id)}>
                   <h4>{lecture.id} - {lecture.title}</h4>
                 </a>
               </li>
             ))}
           </ol>
+
+          <div>
+            <FetchSomething fetch={this.props.fetch} />
+          </div>
         </aside>
       </div>
     );

@@ -14,7 +14,7 @@ class ClassroomController < ApplicationController
     @classroom_props = {
       title: "Classroom for 2B",
       lectures: @lectures,
-      activeLectureId: params[:id],
+      initActiveLectureId: params[:id],
     }
   end
 end

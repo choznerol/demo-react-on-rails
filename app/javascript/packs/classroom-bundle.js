@@ -1,6 +1,6 @@
 import ReactOnRails from 'react-on-rails';
 
-import Classroom from '../bundles/Classroom/components/Classroom';
+import { ConnectedClassroom as Classroom } from '../bundles/Classroom/ConnectedClassroom';
 
 // This is how react_on_rails can see the Classroom in the browser.
 ReactOnRails.register({

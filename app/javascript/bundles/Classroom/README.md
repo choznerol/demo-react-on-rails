@@ -21,7 +21,9 @@ A full feature React.js component running on RoR or SPA
 - [ ] `<a>` 與 Turbolink 共生（90% sure）
 - [ ] SSR（以 ReactOnRails 為例是 `prerender: true`） (80% sure)
 - [ ] Please point out anything I missed？
-
+- [ ] Store (實現 true=>true)
+- [ ] GA（同一個 window）
+- [ ] 298打包成 package
 
 ## TODO（如果決定採用 `<Classroom/>`  方案）
 
