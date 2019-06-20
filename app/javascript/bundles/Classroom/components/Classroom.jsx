@@ -1,4 +1,5 @@
 import React from 'react';
+import find from 'lodash/find';
 import { string, shape, arrayOf, number } from 'prop-types';
 
 export default class Classroom extends React.Component {
@@ -13,7 +14,7 @@ export default class Classroom extends React.Component {
     activeLectureId: string.isRequired,
   };
 
-  getActiveLecture = () => this.props.lectures.filter(({ id }) => id === this.props.activeLectureId)[0]
+  getActiveLecture = () => find(this.props.lectures, ['id', this.props.activeLectureId])
 
   render() {
     const activeLecture = this.getActiveLecture();
